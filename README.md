@@ -1,30 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Este é um projeto de estudo, utilizando oauth para autenticação com nextJS.
+
+Incluindo uma página  de login via github e uma página  index autenticada com opção de sair.
+
+![Screenshot](./docs/preview.png)
+
+
+## Requisitos
+
+- Banco de dados MongoDB
+- OAuth do github. (Pode ser obtido através do seguinte link: https://github.com/settings/apps)
 
 ## Getting Started
 
-First, run the development server:
+- Crie um arquivo na pasta raiz ```.env.local```
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- Inclua as seguintes variavies ambiente no arquivo criado:
+  ```
+  DATABASE_URL={url do banco mongo}
+  GITHUB_CLIENT_ID={id do oauth github}
+  GITHUB_CLIENT_SECRET={secret do oauth github}
+  NEXTAUTH_URL=http://localhost:3000
+  ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Abra [http://localhost:3000](http://localhost:3000) Para ver o resultado.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### Estudo sobre next-auth criado por :
+[![Sidinei Silva](https://avatars2.githubusercontent.com/u/20242151?v=4&s=70)](https://github.com/sidinei-silva) |
+--- |
+Sidinei Silva |
