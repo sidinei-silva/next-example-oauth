@@ -1,9 +1,15 @@
+import { signOut, useSession, Session } from 'next-auth/client';
 import Head from 'next/head';
 import React from 'react';
 
 import styles from '../styles/Home.module.css';
+import withAuth from '../utils/withAuth';
 
-const Home: React.FC = () => {
+interface HomeProps {
+  session?: Session;
+}
+
+const Home: React.FC<HomeProps> = ({ session }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -16,40 +22,22 @@ const Home: React.FC = () => {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+        {session && (
+          <>
+            <p className={styles.description}>
+              Signed in as{' '}
+              <code className={styles.code}>{session.user.email}</code>
             </p>
-          </a>
-        </div>
+            <button
+              type="button"
+              onClick={() => {
+                signOut();
+              }}
+            >
+              Sign out
+            </button>
+          </>
+        )}
       </main>
 
       <footer className={styles.footer}>
@@ -66,4 +54,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default withAuth(Home);
